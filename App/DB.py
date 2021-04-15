@@ -8,7 +8,7 @@ class DB:
         config = {
             'host': environ['DB_HOST'],
             'user': environ['DB_USER'],
-            'password': "",
+            'password': environ['DB_PASS'],
             'database': environ['DB_SCHEMA']
         }
 
