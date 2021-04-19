@@ -12,10 +12,10 @@ def index():
     if "user_pin" in session:
         user_pin = session["user_pin"]
         user = UserModel.get(user_pin)
-        ponto_aberto = PontoModel().pontoAberto(user_pin)
-        return render_template("ponto.html", user=user, ponto_aberto=ponto_aberto)
-    else:
-        return redirect(url_for("login"))
+        if user:
+            ponto_aberto = PontoModel().pontoAberto(user_pin)
+            return render_template("ponto.html", user=user, ponto_aberto=ponto_aberto)
+    return redirect(url_for("login"))
 
 
 @app.route("/login", methods=["GET", "POST"])
